@@ -6,3 +6,4 @@ Allow: /
 {{ else }}
 Disallow: /
 {{ end }}
+Sitemap: {{ "sitemap.xml" | absLangURL }}
