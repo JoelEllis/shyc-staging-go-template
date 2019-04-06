@@ -4,16 +4,26 @@
 {{ if .Title }}
 {{ $title = printf "%s%s%s" .Title " | " .Site.Title }}
 {{ end }}
+{{ .Scratch.Set "title" $title }}
+{{ .Scratch.Set "images" (.Params.images | default .Site.Params.Images)}}
+{{ $description := .Description }}
+{{ if .IsPage }}
+  {{ $description = $description | default .Summary }}
+{{ end }}
+{{ $description = $description | default .Site.Params.description }}
+{{ .Scratch.Set "description" $description }}
 
-<title>{{ $title }}</title>
+<title>{{ .Scratch.Get "title" }}</title>
+{{/* <script>console.log({{ .Scratch.Get "images" | jsonify }})</script> */}}
 {{/* {{ block "OG" . }} */}}
-  <meta property="og:title" content="{{ $title }}" />
-  <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}" />
+  <meta property="og:title" content="{{ .Scratch.Get "title" }}" />
+  <meta property="og:description" content="{{ .Scratch.Get "description" }}" />
   <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
   <meta property="og:url" content="{{ .Permalink }}" />
-  {{ with .Params.images }}{{ range first 6 . }}
+  {{ with .Scratch.Get "images" }}{{ range first 6 . }}
     <meta property="og:image" content="{{ . | absURL }}" />
-  {{ end }}{{ end }}
+  {{ end }}
+  {{ end }}
   {{ if .IsPage }}
   {{ if not .PublishDate.IsZero }}<meta property="article:published_time" content="{{ .PublishDate.Format "2006-01-02T15:04:05-07:00" | safeHTML }}"/>
   {{ else if not .Date.IsZero }}<meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05-07:00" | safeHTML }}"/>{{ end }}
@@ -52,13 +62,28 @@
 {{/* {{ end }} */}}
 
 {{/* {{ block "msft" }} */}}
-<meta name="application-name" content="{{ $title }}"/>
+<meta name="application-name" content="{{ .Scratch.Get "title" }}"/>
 {{/* {{ end}} */}}
 
 {{- template "_internal/google_news.html" . -}}
 {{- template "_internal/schema.html" . -}}
-<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
-{{- template "_internal/twitter_cards.html" . -}}
+<meta name="description" content="{{ .Scratch.Get "description" }}">
+{{ if .IsPage }}
+{{ with .Scratch.Get "images" }}
+<!-- Twitter summary card with large image must be at least 280x150px -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:image:src" content="{{ index . 0 | absURL }}"/>
+{{ else }}
+  <meta name="twitter:card" content="summary"/>
+{{ end }}
+{{ `<!-- Twitter Card data --> ` | safeHTML }}
+<meta name="twitter:text:title" content="{{ .Title }}"/>
+<meta name="twitter:title" content="{{ .Title }}"/>
+<meta name="twitter:description" content="{{ .Scratch.Get "description" }}"/>
+{{ with .Site.Social.twitter }}<meta name="twitter:site" content="@{{ . }}"/>{{ end }}
+{{ range .Site.Authors }}
+  {{ with .twitter }}<meta name="twitter:creator" content="@{{ . }}"/>{{ end }}
+{{ end }}{{ end }}
 <meta name="twitter:text:title" content="{{ if .Title }}{{ .Title }} | {{ end }}{{ .Site.Title }}"/>
 
 {{ if eq (getenv "HUGO_ENV") "production" | or (eq .Site.Params.env "production")  }}
