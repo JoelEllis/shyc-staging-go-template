@@ -1,11 +1,4 @@
 (function () {
-  let header = document.getElementsByTagName("header")[0];
-  window.addEventListener("scroll", function () {
-  let scr = this.scrollY
-  if (scr > 1) {
-    header.className = "shadow"
-  } else {
-    header.className = ""
-  }
-})
-})();
+  var a = document.getElementsByTagName("header")[0];
+  window.addEventListener("scroll", function () { a.className = 1 < this.scrollY ? "shadow" : "" });
+}).call(this);
