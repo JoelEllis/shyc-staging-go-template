@@ -16,7 +16,7 @@
 
   {{ $stylesheet := resources.Get "css/reset.scss" | toCSS | minify | resources.Fingerprint }}
   {{ with $stylesheet }}
-    <link href="{{ $stylesheet.Permalink }}" rel="stylesheet" integrity="{{ $stylesheet.Data.Integrity }}">
+    <link href="{{ $stylesheet.RelPermalink }}" rel="stylesheet" integrity="{{ $stylesheet.Data.Integrity }}">
   {{ end }}
 
   {{ range .Site.Params.custom_css }}
@@ -24,11 +24,11 @@
   {{ end }}
   {{ $stylesheet := resources.Get "css/main.scss" | toCSS | minify | resources.Fingerprint }}
   {{ with $stylesheet }}
-    <link href="{{ $stylesheet.Permalink }}" rel="stylesheet" integrity="{{ $stylesheet.Data.Integrity }}">
+    <link href="{{ $stylesheet.RelPermalink }}" rel="stylesheet" integrity="{{ $stylesheet.Data.Integrity }}">
   {{ end }}
   {{ $script := resources.Get "js/main.js" | minify | resources.Fingerprint }}
   {{ with $script }}
-    <script async defer src="{{ $script.Permalink }}" integrity="{{ $script.Data.Integrity }}"></script>
+    <script async defer src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
   {{ end }}
   {{- partial "social-tags.html" . -}}
   {{ block "favicon" . }}
