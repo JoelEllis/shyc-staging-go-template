@@ -26,6 +26,14 @@ article.post {
   text-align: initial;
 }
 
+.archives {
+
+  h2,
+  h3 {
+    padding-top: 4rem
+  }
+}
+
 main {
   padding: 2rem;
   text-align: center;
@@ -67,12 +75,13 @@ header {
 }
 
 @media all and (max-width: 340px) {
-  body > header > nav > a:nth-child(3) {
+  body>header>nav>a:nth-child(3) {
     display: none;
   }
 }
+
 @media all and (max-width: 262px) {
-  body > header > nav > a.button.cta.right {
+  body>header>nav>a.button.cta.right {
     display: none;
   }
 }
@@ -307,7 +316,8 @@ h6 {
   font-style: normal;
   font-variant: normal;
   font-weight: 700;
-  margin-top: 36px;
+  padding-top: $header-hight + 1.125;
+  margin-top: 0-$header-hight;
   margin-bottom: 12px;
 }
 
@@ -355,6 +365,7 @@ blockquote {
   max-width: 600px;
   padding-left: 8px;
   quotes: "\201C""\201D";
+
   &::before {
     color: #ccc;
     content: open-quote;
@@ -368,6 +379,7 @@ blockquote {
     // add margin to nested blockquotes
     margin-left: 8px;
     margin-bottom: 0;
+
     &::before {
       content: normal;
     }
@@ -470,7 +482,7 @@ body {
 }
 
 section {
-  margin: 46px 0;
+  margin: 0 0 1rem 1rem;
 }
 
 .container {
@@ -619,6 +631,62 @@ img.loaded {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.prev-next {
+  font-size: 0.875em;
+  display: block;
+  width: auto;
+  overflow: hidden;
+  width: 100%;
+
+  a {
+    display: block;
+    float: left;
+    margin: 2em;
+    padding: .5em;
+    background-color: var(--theme-d2-background);
+    color: var(--theme-d2-text);
+  }
+
+  img {
+    vertical-align: middle;
+    /* mask:  */
+  }
+
+  .next {
+    padding-left: 1em;
+    text-align: right;
+    float: right;
+    vertical-align: middle;
+  }
+
+  .prev {
+    padding-right: 1em;
+    float: left;
+  }
+}
+
+img.splash {
+  width: 100%;
+  max-width: unset;
+  // margin: 0 -1em;
+  // align: middle;
+}
+aside.meta-aside {
+  margin: 0.5em 0;
+  font-size: 0.8em;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      margin: 0;
+      padding: 0;
+    }
+  }
 }
 
 // ------------------------------------------------ //
