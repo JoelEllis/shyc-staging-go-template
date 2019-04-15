@@ -1,10 +1,19 @@
 {{ define "main" }}
-  <article class="post">
+  <article class="post archives">
+    <h1 id="title">{{ .Title }}</h1>
     {{ .Content }}
-  {{ range .Pages }}
-    <section>
-        <a href="{{.Permalink}}">{{.Date.Format "2006-01-02"}} | {{.Title}}</a>
-    </section>
-  {{ end }}
+    {{ range where .Site.Pages "Section" "posts" }}
+      {{ range (.Pages.GroupByDate "2006") }}
+        <h2>{{ .Key }}</h2>
+        {{ range (.Pages.GroupByDate "January") }}
+          <h3>{{ .Key }}</h3>
+          {{ range .Pages}}
+            <section>
+              <a href="{{.Permalink}}">{{.Date.Format "2006-01-02"}} | {{.Title}}</a>
+            </section>
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
   </article>
 {{ end }}
