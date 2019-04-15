@@ -99,26 +99,26 @@
 {
   "@context": "http://schema.org",
   "@type": "WebSite",
-  "url": "{{ .Site.BaseURL }}",
+  "url": {{ .Site.BaseURL | jsonify }},
   {{ if .Site.Author.name -}}
   "author": {
     "@type": "Person",
-    "name": "{{ .Site.Author.name }}"
+    "name": {{ .Site.Author.name | jsonify }}
   },
   {{- end }}
   {{ if .Site.Params.description -}}
-  "description": "{{ .Site.Params.description }}",
+  "description": {{ .Scratch.Get "description" | jsonify }},
   {{- end }}
   {{ with .Site.Params.image -}}
-  "image": "{{ .url | absURL }}",
+  "image": {{ .url | absURL | jsonify }},
   {{- end }}
   {{ with .Site.Params.logo -}}
-  "thumbnailUrl": "{{ .url | absURL }}",
+  "thumbnailUrl": {{ .url | absURL | jsonify }},
   {{- end }}
   {{ with .Site.Copyright -}}
-  "license": "{{ . }}",
+  "license": {{ . | jsonify }},
   {{- end }}
-  "name": "{{ .Site.Title }}"
+  "name": {{ .Site.Title | jsonify }}
 }
 </script>
 {{/*
@@ -186,7 +186,7 @@
     "name": {{ .Site.Author.name | jsonify }}
   },
   {{- end }}
-  "description": {{ .Description | jsonify }}
+  "description": {{ .Scratch.Get "description" | jsonify }}
 }
 </script>
 {{- end }}
