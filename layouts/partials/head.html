@@ -1,6 +1,6 @@
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> -->
   {{/* NOTE: the Site's title, and if there is a page title, that is set too */}}
   {{/* <title>{{ if .Title }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title> */}}
   <meta name="HandheldFriendly" content="True">
@@ -14,7 +14,7 @@
   {{ end }}
 
 
-  {{ $stylesheet := resources.Get "css/reset.scss" | toCSS | minify | resources.Fingerprint }}
+  {{ $stylesheet := resources.Get "css/reset.scss" | toCSS | minify | resources.Fingerprint "sha384" }}
   {{ with $stylesheet }}
     <link href="{{ $stylesheet.RelPermalink }}" rel="stylesheet" integrity="{{ $stylesheet.Data.Integrity }}">
   {{ end }}
@@ -22,11 +22,11 @@
   {{ range .Site.Params.custom_css }}
     <link rel="stylesheet" href="{{ relURL ($.Site.BaseURL) }}{{ . }}">
   {{ end }}
-  {{ $stylesheet := resources.Get "css/main.scss" | toCSS | minify | resources.Fingerprint }}
+  {{ $stylesheet := resources.Get "css/main.scss" | toCSS | minify | resources.Fingerprint "sha384" }}
   {{ with $stylesheet }}
     <link href="{{ $stylesheet.RelPermalink }}" rel="stylesheet" integrity="{{ $stylesheet.Data.Integrity }}">
   {{ end }}
-  {{ $script := resources.Get "js/main.js" | minify | resources.Fingerprint }}
+  {{ $script := resources.Get "js/main.js" | minify | resources.Fingerprint "sha384" }}
   {{ with $script }}
     <script async defer src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
   {{ end }}
