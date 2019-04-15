@@ -1,6 +1,10 @@
 {{ define "main" }}
 <article class="post">
   <h1 id="title">{{ .Title }}</h1>
+  {{ partial "aside" . }}
+  {{with .Params.images }}
+    <img src="{{ (index . 0) | absURL }}" alt="Splash Image" class="splash">
+  {{end}}
   {{ .Content }}
   {{if or .PrevInSection .NextInSection}}
   <nav class="prev-next">
