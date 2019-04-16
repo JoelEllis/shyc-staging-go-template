@@ -445,8 +445,11 @@ strong {
 // Links and Selections
 a {
   font-weight: bold;
-  color: #50117a;
+  color: $link-color;
   text-decoration: underline;
+  &:active{
+    color: $link-active-color
+  }
 }
 
 ::selection {
