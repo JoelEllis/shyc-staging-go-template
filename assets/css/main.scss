@@ -111,10 +111,46 @@ div.header-spacer {
 }
 
 article.post-preview {
+  padding: 1rem;
+
   div {
     text-decoration: none;
     color: $text-color;
   }
+
+  &>em {
+    margin-top: 0;
+    font-size: 1.5em;
+    font-weight: bolder;
+    font-style: unset;
+  }
+
+  .summary {
+    padding-top: .5rem;
+  }
+}
+
+a.post-preview-text-wrapper {
+  text-decoration: none;
+  color: $text-color;
+}
+
+.post-preview-text {
+  // padding: 1rem;
+  text-decoration: none;
+  color: $text-color;
+
+  &>em {
+    margin-top: 0;
+    font-size: 1.5em;
+    font-weight: bolder;
+    font-style: unset;
+  }
+
+  .summary {
+    padding-top: 0;
+  }
+
 }
 
 .button {
@@ -277,19 +313,7 @@ article.post-preview {
 
     article.post-preview {
       position: relative;
-      padding: 1rem;
       background-color: $bg-color;
-
-      &>em {
-        margin-top: 0;
-        font-size: 1.5em;
-        font-weight: bolder;
-        font-style: unset;
-      }
-
-      .summary {
-        padding-top: .5rem;
-      }
     }
   }
 }
@@ -452,7 +476,8 @@ a {
   font-weight: bold;
   color: $link-color;
   text-decoration: underline;
-  &:active{
+
+  &:active {
     color: $link-active-color
   }
 }
@@ -682,6 +707,7 @@ img.splash {
   // margin: 0 -1em;
   // align: middle;
 }
+
 aside.meta-aside {
   margin: 0.5em 0;
   font-size: 0.8em;
@@ -748,4 +774,14 @@ table {
 .gist td,
 .gist th {
   border: none;
+}
+
+sub {
+  vertical-align: sub;
+  font-size: smaller;
+}
+
+sup {
+  vertical-align: super;
+  font-size: smaller;
 }

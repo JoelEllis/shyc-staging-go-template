@@ -7,9 +7,17 @@
       {{ range (.Pages.GroupByDate "January") }}
         <h3>{{ .Key }}</h3>
         {{ range .Pages}}
-          <section>
-            <a href="{{.Permalink}}">{{.Date.Format "2006-01-02"}} | {{.Title}}</a>
-          </section>
+{{ $title := .Site.Title }}{{ if .Title }}{{ $title = .Title}}{{ end }}
+{{ $description := .Description }}
+{{ if .IsPage }}
+{{ $description = $description | default .Summary }}
+{{ end }}
+{{ $description = $description | default .Site.Params.description }}
+          <a href="{{.Permalink}}" class="post-preview-text-wrapper"><section class="post-preview-text">
+            <time datetime="{{.Date.Format "2006-01-02T15:04:05Z07:00"}}">{{.Date.Format "Jan 2, 2006"}}</time><br>
+            <em>{{$title}}</em>
+            <p class="summary">{{$description}}</p>
+          </section></a>
         {{ end }}
       {{ end }}
     {{ end }}
