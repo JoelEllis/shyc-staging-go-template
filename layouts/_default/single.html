@@ -1,4 +1,7 @@
 {{ define "main" }}
+{{ if .Page.Params.Slideshow }}
+{{- partial "slide.html" . -}}
+{{ end }}
 <article class="post">
   <h1 id="title">{{ .Title }}</h1>
   {{ .Content }}

@@ -1,10 +1,13 @@
-{{ range .Site.Pages }}
-{{ if in .Params.tags ($.Get 0) }}
-{{ $title := .Title}}
+{{ range .Site.RegularPages.RelatedTo (keyVals "tags" ($.Get 0))}}
+{{ $title := .Site.Title }}{{ if .Title }}{{ $title = .Title}}{{ end }}
+{{ $description := .Description }}
+{{ if .IsPage }}
+  {{ $description = $description | default .Summary }}
+{{ end }}
+{{ $description = $description | default .Site.Params.description }}
 {{ (print "<" ($.Get 2) ">") | safeHTML }}{{ $title }}{{ (print "</" ($.Get 2) ">") | safeHTML }}
 <!-- {{with .Params.images }}
 <img alt="{{$.Get 1}} - {{ $title }}" src="{{ index . 0 }}" /><br>
 {{ end }} -->
-<p>{{ .Scratch.Get "description" }}</p>
-{{ end }}
+<p>{{ $description }}</p>
 {{ end }}
