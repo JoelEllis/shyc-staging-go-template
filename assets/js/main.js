@@ -1,4 +1,3 @@
 (function () {
-  var a = document.getElementsByTagName("header")[0];
-  window.addEventListener("scroll", function () { a.className = 1 < this.scrollY ? "shadow" : "" });
+  window.addEventListener("scroll", function () { document.getElementsByTagName("header")[0].className = 1 < this.scrollY ? "shadow" : "" });
 }).call(this);
