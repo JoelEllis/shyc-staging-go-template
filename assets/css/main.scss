@@ -280,8 +280,11 @@ article.post-preview {
       padding: 1rem;
       background-color: $bg-color;
 
-      h1 {
+      &>em {
         margin-top: 0;
+        font-size: 1.5em;
+        font-weight: bolder;
+        font-style: unset;
       }
 
       .summary {
