@@ -16,7 +16,8 @@ article.post {
   margin: auto;
   padding: 1rem;
   display: inline-block;
-  width: auto;
+  width: 100%;
+  box-sizing: border-box;
   max-width: 64rem;
 
   // @media all and (max-width: 68rem) {
@@ -557,8 +558,9 @@ section {
 // -------------------------------------------------//
 // an optional filename field that goes before a pre
 .filename {
+  border-radius: 0;
   display: block;
-  background: #444c5b;
+  background: #35362e;
   border-top-right-radius: 4px;
   border-top-left-radius: 4px;
   position: relative;
@@ -567,36 +569,30 @@ section {
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
+  max-width: 100%;
 
   div {
+    border-radius: 0;
     font-size: 16px;
     font-family: $code-font;
     color: #c0c5ce;
-    background: #2b303b;
+    background: $code-bg-color;
     display: inline-block;
     border-top-right-radius: 4px;
     border-top-left-radius: 4px;
-    padding: 0;
+    padding: 8px;
     padding-top: 16px;
     padding-bottom: 6px;
   }
 
   div:first-child {
     color: #c0c5ce;
-    background: #2b303b;
+    background: $code-bg-color;
   }
 
   div:not(:first-child) {
-    color: #c0c5ce;
-    background: #2b303b70;
-  }
-
-  border-radius: 0;
-
-  div {
-    padding-left: 0;
-    padding-right: 0;
-    border-radius: 0;
+    color: #94989e;
+    background: #2728228f;
   }
 }
 
@@ -606,14 +602,23 @@ code {
   background: #edeef2;
   border-radius: 4px;
   padding: 2px 6px;
+  max-width: 100%;
+  width: auto;
+}
+
+div.highlight, pre.chroma {
+  max-width: 100%;
+  width: auto;
 }
 
 pre {
+  box-sizing: border-box;
   display: block;
   overflow: auto;
   margin: 36px 0;
   padding: 36px;
   max-width: 100%;
+  width: auto;
   border-radius: 4px;
   font-size: 1rem;
   line-height: 1.4;
@@ -622,7 +627,7 @@ pre {
   word-break: break-all;
   word-wrap: break-word;
   background-color: $code-bg-color;
-
+  color: $code-color;
   code {
     padding: 0;
     font-size: 100%;
