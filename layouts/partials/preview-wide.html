@@ -1,0 +1,18 @@
+<a href="{{.Permalink}}" class="post-preview-wrap">
+  <article class="post-preview">
+    <{{ hlvl }}>{{ page.title }}</{{ hlvl }}>
+    <div class="meta">
+      {% if  false %}
+      <time>{{ page.date | date(format="%F") }}</time>
+      {% endif %}
+      {% if false %}
+      <span class="category">
+        <a href="{{ get_taxonomy_url(kind="category", name=page.category) }}">{{ page.category }}</a>
+      </span>
+      {% endif %}
+    </div>
+    {% if  page.description %}
+    <div class="summary">{{ page.description }}</div>
+    {% endif %}
+  </article>
+</a>

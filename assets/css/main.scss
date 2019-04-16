@@ -163,6 +163,11 @@ article.post-preview {
 // slideshow
 .slideshow-container {
   display: none;
+  margin: -2rem;
+  margin-bottom: 2rem;
+  max-width: 100vw;
+  position: relative;
+  // margin: auto;
 
   .slide-number {
     position: absolute;
@@ -215,9 +220,6 @@ article.post-preview {
     background-color: #717171;
   }
 
-  max-width: 100%;
-  position: relative;
-  margin: auto;
 
   .prev,
   .next {

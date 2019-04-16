@@ -2,15 +2,10 @@
 <div class="slideshow-container" onload="">
   {{ range $index, $element := first 3 (.Site.RegularPages.RelatedTo (keyVals "tags" $slides))}}
   <!-- https://github.com/gohugoio/hugo/issues/5867 -->
-  {{ $image := $element.Params.images }}
+  {{ $image := index $element.Params.images 0 }}
   <div class="slide fade" style="background-image: url('{{$image}}')">
     <div class="slide-number">{{ $index }} / 3</div>
-    {{ $description := $element.Description }}
-    {{ if $element.IsPage }}
-  {{ $description = $description | default $element.Summary }}
-{{ end }}
-{{ $description = $description | default $.Site.Params.description }}
-<p>{{ $description }}</p>
+
   </div>
   {{ end }}
   <a class="prev" onclick="plusSlides(-1)" aria-label="Next">&#10094;</a>
