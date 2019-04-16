@@ -4,7 +4,6 @@
   <!-- https://github.com/gohugoio/hugo/issues/5867 -->
   {{ $image := index $element.Params.images 0 }}
   <div class="slide fade" style="background-image: url('{{$image}}')">
-    <div class="slide-number">{{ $index }} / 3</div>
     {{- partial "preview-wide.html" $element -}}
   </div>
   {{ end }}
