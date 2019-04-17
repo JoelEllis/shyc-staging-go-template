@@ -5,11 +5,6 @@
 <article class="post">
   <h1 id="title">{{ .Title }}</h1>
   {{ .Content }}
-  {{if or .PrevInSection .NextInSection}}
-  <nav class="prev-next">
-    {{if .PrevInSection}}<a class="prev" href="{{.PrevInSection.Permalink}}" title="{{.PrevInSection.Title}}"><img src="/feather/chevron-left.svg" onerror="this.src='/feather/chevron-left.png'" alt="(Previous)"> {{.PrevInSection.Title}}</a>{{end}}
-    {{if .NextInSection}}<a class="next" href="{{.NextInSection.Permalink}}" title="{{.NextInSection.Title}}">{{.NextInSection.Title}} <img src="/feather/chevron-right.svg" onerror="this.src='/feather/chevron-right.png'" alt="(Next)"></a>{{end}}
-  </nav>{{end}}
 </article>
 
 {{ end }}
