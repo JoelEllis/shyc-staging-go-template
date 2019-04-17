@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Content Manager</title>
+  <script src="https://identity-js.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+
+<body>
+  <script src="https://unpkg.com/netlify-cms@^2.0/dist/cms.js"></script>
+  <script>
+
+    var PostPreview = createClass({
+      render: function () {
+        var {entry} = this.props;
+        const date = entry.getIn(['meta', "date"]);
+        console.log(date);
+        return h('main', {},
+          h('article', {"className": "post"},
+            h('h1', {"id": "title"}, entry.getIn(['data', 'title'])),
+            h('aside', { "className": "meta-aside" },
+            h('ul', {},
+              h('li', {},
+                h('time', { "className": "post-date" }, "Jul 27, 2018"),
+              ),
+              h('li', {},
+                h('em', {}, "tags",
+              ),
+              h('li', {}, "x min read"),
+              ),
+              ), this.props.widgetFor('body'))
+          ))
+      }
+    });
+
+    CMS.registerPreviewTemplate("post", PostPreview);
+{{ $stylesheet := resources.Get "css/reset.scss" | toCSS | minify | resources.Fingerprint "sha384" }}
+  {{ with $stylesheet }}
+    CMS.registerPreviewStyle("{{ $stylesheet.RelPermalink }}");
+  {{ end }}
+
+  {{ range .Site.Params.custom_css }}
+    CMS.registerPreviewStyle("{{ relURL ($.Site.BaseURL) }}{{ . }}");
+  {{ end }}
+  {{ $stylesheet := resources.Get "css/main.scss" | toCSS | minify | resources.Fingerprint "sha384" }}
+  {{ with $stylesheet }}
+    CMS.registerPreviewStyle("{{ $stylesheet.RelPermalink }}");
+  {{ end }}
+
+  </script>
+</body>
+
+</html>
