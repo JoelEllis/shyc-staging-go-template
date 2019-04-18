@@ -1,7 +1,7 @@
-@import 'syntax';
-@import 'invis';
-@import 'vars';
-@import 'fonts';
+@import "syntax";
+@import "invis";
+@import "vars";
+@import "fonts";
 // @import 'icons';
 /**
  * Made by Joel Ellis
@@ -29,10 +29,9 @@ article.post {
 }
 
 .archives {
-
   h2,
   h3 {
-    padding-top: 4rem
+    padding-top: 4rem;
   }
 }
 
@@ -47,10 +46,11 @@ article {
 
 header {
   vertical-align: middle;
-  height: $header-hight;
+  height: $header-hight + $header-margin-height;
 
   nav {
     height: $header-hight;
+    margin: $header-margin-height / 2;
   }
 
   width: 100%;
@@ -62,7 +62,7 @@ header {
   transition: box-shadow 0.2s;
 
   .logo {
-    width: ($header-hight/78)*205
+    width: ($header-hight/78) * 205;
   }
 
   &.shadow {
@@ -71,19 +71,28 @@ header {
 }
 
 @media all and (max-width: 430px) {
-  body>header>nav>a:nth-child(2) {
+  body > header > nav > a:nth-child(2) {
     display: none;
+  }
+  .post-preview {
+    margin-top: -4rem;
+  }
+  .post-preview-wrap {
+    width: 70%;
   }
 }
 
 @media all and (max-width: 340px) {
-  body>header>nav>a:nth-child(3) {
+  body > header > nav > a:nth-child(3) {
     display: none;
+  }
+  .post-preview {
+    margin-top: -6rem;
   }
 }
 
 @media all and (max-width: 262px) {
-  body>header>nav>a.button.cta.right {
+  body > header > nav > a.button.cta.right {
     display: none;
   }
 }
@@ -91,25 +100,25 @@ header {
 .socials {
   display: inline-block;
   float: right;
-  padding: .5rem;
+  padding: 0.5rem;
 
   @media all and (max-width: 636px) {
     display: none;
   }
 
   .social {
-    padding: .5rem;
+    padding: 0.5rem;
     width: 1rem;
     height: 1rem;
 
     img {
-      vertical-align: top
+      vertical-align: top;
     }
   }
 }
 
 div.header-spacer {
-  height: $header-hight;
+  height: $header-hight + $header-margin-height;
 }
 
 article.post-preview {
@@ -120,7 +129,7 @@ article.post-preview {
     color: $text-color;
   }
 
-  &>em {
+  & > em {
     margin-top: 0;
     font-size: 1.5em;
     font-weight: bolder;
@@ -128,7 +137,7 @@ article.post-preview {
   }
 
   .summary {
-    padding-top: .5rem;
+    padding-top: 0.5rem;
   }
 }
 
@@ -142,7 +151,7 @@ a.post-preview-text-wrapper {
   text-decoration: none;
   color: $text-color;
 
-  &>em {
+  & > em {
     margin-top: 0;
     font-size: 1.5em;
     font-weight: bolder;
@@ -152,7 +161,6 @@ a.post-preview-text-wrapper {
   .summary {
     padding-top: 0;
   }
-
 }
 
 .button {
@@ -163,9 +171,8 @@ a.post-preview-text-wrapper {
   border-radius: 0;
   height: $header-hight - 1rem;
   line-height: $header-hight - 1rem;
-  padding: .25rem 1rem;
-  ;
-  margin: .25rem;
+  padding: 0.25rem 1rem;
+  margin: 0.25rem;
   text-align: center;
   vertical-align: bottom;
   transition: box-shadow 0.2s;
@@ -215,7 +222,7 @@ a.post-preview-text-wrapper {
 
   .slide {
     display: none;
-    height: 95vh;
+    height: 90vh;
     width: 100%;
     text-align: center;
     background-position: center;
@@ -244,11 +251,11 @@ a.post-preview-text-wrapper {
 
     @keyframes fade {
       from {
-        opacity: .4
+        opacity: 0.4;
       }
 
       to {
-        opacity: 1
+        opacity: 1;
       }
     }
   }
@@ -257,7 +264,6 @@ a.post-preview-text-wrapper {
   .dot:hover {
     background-color: #717171;
   }
-
 
   .prev,
   .next {
@@ -327,7 +333,7 @@ html {
   font-family: $text-font;
   color: $text-color;
   background-color: $bg-color;
-  word-break: break-word
+  word-break: break-word;
 }
 
 html,
@@ -348,8 +354,8 @@ h6 {
   font-style: normal;
   font-variant: normal;
   font-weight: 700;
-  padding-top: $header-hight + 1.125;
-  margin-top: 0-$header-hight;
+  padding-top: $header-hight + $header-margin-height + 1.125;
+  margin-top: 0-$header-hight - $header-margin-height;
   margin-bottom: 12px;
 }
 
@@ -431,7 +437,7 @@ blockquote {
 // Horizonal lines
 hr {
   border: 0;
-  border-bottom: .125rem solid $line-color;
+  border-bottom: 0.125rem solid $line-color;
   height: 0;
   margin: 2.25rem 0;
   padding: 0;
@@ -480,7 +486,7 @@ a {
   text-decoration: underline;
 
   &:active {
-    color: $link-active-color
+    color: $link-active-color;
   }
 }
 
@@ -504,7 +510,7 @@ code {
 .date,
 .info {
   // the small text that shows info related to dates, etc.
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 300;
   text-transform: uppercase;
   font-size: 12px;
@@ -607,7 +613,8 @@ code {
   width: auto;
 }
 
-div.highlight, pre.chroma {
+div.highlight,
+pre.chroma {
   max-width: 100%;
   width: auto;
 }
@@ -684,7 +691,7 @@ img.loaded {
     display: block;
     float: left;
     margin: 2em;
-    padding: .5em;
+    padding: 0.5em;
     background-color: var(--theme-d2-background);
     color: var(--theme-d2-text);
   }
@@ -754,26 +761,26 @@ table {
 
   td,
   th {
-    border-right: .125rem solid $line-color;
-    padding: .5rem 1.125rem
+    border-right: 0.125rem solid $line-color;
+    padding: 0.5rem 1.125rem;
   }
 
   td:last-child,
   th:last-child {
-    border-right: 0
+    border-right: 0;
   }
 
   td {
-    border-top: .125rem solid $line-color;
+    border-top: 0.125rem solid $line-color;
   }
 
   th,
   td {
-    padding: .375rem 1.1875rem;
+    padding: 0.375rem 1.1875rem;
   }
 
   thead {
-    display: table-header-group
+    display: table-header-group;
   }
 }
 
