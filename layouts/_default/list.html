@@ -1,16 +1,13 @@
 {{ define "main" }}
   <article class="post archives">
-    <h1 id="title">{{ .Title }}</h1>
     {{ .Content }}
     {{ range (.Pages.GroupByDate "2006") }}
-      <h2>{{ .Key }}</h2>
       {{ range (.Pages.GroupByDate "January") }}
-        <h3>{{ .Key }}</h3>
         {{ range .Pages}}
 {{ $title := .Site.Title }}{{ if .Title }}{{ $title = .Title}}{{ end }}
 {{ $description := .Description }}
 {{ if .IsPage }}
-{{ $description = $description | default .Summary }}
+{{ $description = .Summary }}
 {{ end }}
 {{ $description = $description | default .Site.Params.description }}
           <a href="{{.Permalink}}" class="post-preview-text-wrapper"><section class="post-preview-text">

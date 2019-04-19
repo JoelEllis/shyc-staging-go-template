@@ -14,7 +14,7 @@
 
 
   <div class="dot-cont">
-    {{ range $index, $element := (first 3 (.Site.RegularPages.RelatedTo (keyVals "tags" ($slides))))}}<span class="dot" onclick="currentSlide({{ $index }})"></span>{{end}}
+    {{ range $index, $element := (first 3 (.Site.RegularPages.RelatedTo (keyVals "tags" ($slides))))}}<span class="dot" onclick="currentSlide({{ add $index 1 }})"></span>{{end}}
   </div>
 
   <script>slideIndex = 1; showSlides = function (n) {
@@ -35,5 +35,7 @@
       showSlides(slideIndex += n);
     }; showSlides(slideIndex); function currentSlide(n) {
       showSlides(slideIndex = n);
-    }; document.getElementsByClassName('slideshow-container')[0].style.display = "block"</script>
+    }; document.getElementsByClassName('slideshow-container')[0].style.display = "block"
+    setInterval(_=>{plusSlides(1)},5000)
+    </script>
 </div>
