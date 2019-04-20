@@ -88,7 +88,7 @@ header {
     display: none;
   }
   .post-preview {
-    margin-top: -2rem;
+    margin-top: -3rem;
   }
   .post-preview-wrap {
     width: 70%;
@@ -98,6 +98,9 @@ header {
   }
   .slideshow-container {
     margin: 0 !important;
+  }
+  article.archives #title {
+    text-align: center;
   }
 }
 
@@ -324,7 +327,7 @@ a.post-preview-text-wrapper {
     box-shadow: $light-box-shadow;
     transform: translateX(-50%);
     position: absolute;
-    top: 70%;
+    bottom: 15%;
     left: 50%;
     z-index: 2;
 
