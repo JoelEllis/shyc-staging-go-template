@@ -19,6 +19,7 @@ article.post {
   display: inline-block;
   width: 100%;
   box-sizing: border-box;
+  max-width: 64rem;
   // @media all and (max-width: 68rem) {
   //   width: 100%;
   // }
@@ -29,18 +30,18 @@ article.post {
 article.archives {
   h2,
   h3 {
-    padding-top: 5rem;
+    padding-top: 3rem
   }
-  background: none;
-  padding: 0;
-  section {
-    background-color: $article-color;
-    padding: 1rem;
-    margin-left: 0;
-  }
-  .summary {
-    margin-bottom: 0;
-  }
+  // background: none;
+  // padding: 0;
+  // section {
+  //   background-color: $article-color;
+  //   padding: 1rem;
+  //   margin-left: 0;
+  // }
+  // .summary {
+  //   margin-bottom: 0;
+  // }
   em {
     display: block;
     margin-top: 0.5rem;
@@ -376,10 +377,10 @@ h6 {
   margin-top: 0-$header-hight - $header-margin-height;
 }
 
-#notfound{
-  margin: 0;
-  padding: 4rem;
-}
+// #notfound{
+//   margin: 0;
+//   padding: 4rem;
+// }
 
 h1 {
   font-size: 32px;
