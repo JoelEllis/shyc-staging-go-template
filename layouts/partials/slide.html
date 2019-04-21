@@ -7,14 +7,14 @@
     {{- partial "preview-wide.html" $element -}}
   </div>
   {{ end }}
-  <a class="prev" onclick="plusSlides(-1)" aria-label="Next">&#10094;</a>
+  <a class="prev" onclick="plusSlides(-1);remove()" aria-label="Next">&#10094;</a>
   {{/* {# <span class="sr-only">Previous</span> #} */}}
-  <a class="next" onclick="plusSlides(1)" aria-label="Next">&#10095;</a>
+  <a class="next" onclick="plusSlides(1);remove()" aria-label="Next">&#10095;</a>
   {{/* {# <span class="sr-only">Next</span> #} */}}
 
 
   <div class="dot-cont">
-    {{ range $index, $element := (first 3 (.Site.RegularPages.RelatedTo (keyVals "tags" ($slides))))}}<span class="dot" onclick="currentSlide({{ $index }})"></span>{{end}}
+    {{ range $index, $element := (first 3 (.Site.RegularPages.RelatedTo (keyVals "tags" ($slides))))}}<span class="dot" onclick="currentSlide({{ add $index 1 }});remove()"></span>{{end}}
   </div>
 
   <script>slideIndex = 1; showSlides = function (n) {
@@ -35,5 +35,8 @@
       showSlides(slideIndex += n);
     }; showSlides(slideIndex); function currentSlide(n) {
       showSlides(slideIndex = n);
-    }; document.getElementsByClassName('slideshow-container')[0].style.display = "block"</script>
+    }; document.getElementsByClassName('slideshow-container')[0].style.display = "block"
+    let interval = setInterval(_=>{plusSlides(1)},5000)
+    let remove = () => clearInterval(interval)
+    </script>
 </div>
