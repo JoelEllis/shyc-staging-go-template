@@ -1,39 +1,14 @@
-{{- $pc := .Site.Config.Privacy.GoogleAnalytics -}}
-{{- if not $pc.Disable -}}
-{{ with .Site.GoogleAnalytics }}
 <script type="application/javascript">
-{{ template "__ga_js_set_doNotTrack" $ }}
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	{{- if $pc.UseSessionStorage }}
-	if (window.sessionStorage) {
-		var GA_SESSION_STORAGE_KEY = 'ga:clientId';
-		ga('create', '{{ . }}', {
-	    'storage': 'none',
-	    'clientId': sessionStorage.getItem(GA_SESSION_STORAGE_KEY),
-      'siteSpeedSampleRate': 25
-	   });
-	   ga(function(tracker) {
-	    sessionStorage.setItem(GA_SESSION_STORAGE_KEY, tracker.get('clientId'));
-	   });
-   }
-	{{ else }}
-	ga('create', '{{ . }}', {'siteSpeedSampleRate': 25});
-	{{ end -}}
-	{{ if $pc.AnonymizeIP }}ga('set', 'anonymizeIp', true);{{ end }}
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
+(function (i, r) {
+i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+  (i[r].q = i[r].q || []).push(arguments)
+}, i[r].l = 1 * new Date();
+})(window, 'ga');
+{{ with .Site.GoogleAnalytics }}
+ga('create', '{{ . }}', {'siteSpeedSampleRate': 25});
+{{ if $.Site.Params.AnonymizeIP }}ga('set', 'anonymizeIp', true);{{ end }}
+ga('send', 'pageview');
+a = document.createElement('script'),
+m = document.getElementsByTagName('script')[0]||document.getElementsByTagName("head")[0].firstChild; a.async = 1; a.src = 'https://www.google-analytics.com/analytics.js'; m.parentNode.insertBefore(a, m)
 {{ end }}
-{{- end -}}
-
-{{- define "__ga_js_set_doNotTrack" -}}{{/* This is also used in the async version. */}}
-{{- $pc := .Site.Config.Privacy.GoogleAnalytics -}}
-{{- if not $pc.RespectDoNotTrack -}}
-var doNotTrack = false;
-{{- else -}}
-var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
-var doNotTrack = (dnt == "1" || dnt == "yes");
-{{- end -}}
-{{- end -}}
+</script>
