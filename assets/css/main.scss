@@ -825,6 +825,9 @@ label.required::after {
   content: " *";
   color: #e32;
 }
+.g-recaptcha {
+  margin-bottom: 1rem;
+}
 input,
 textarea,
 select {
