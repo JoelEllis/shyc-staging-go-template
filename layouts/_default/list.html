@@ -16,7 +16,7 @@
 {{ $description = $description | default .Site.Params.description }}
           <a href="{{.Permalink}}" class="post-preview-text-wrapper"><section class="post-preview-text" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting" >
             <time datetime="{{.Date.Format "2006-01-02T15:04:05Z07:00"}}" itemprop="datePublished">{{.Date.Format "Jan 2, 2006"}}</time><br>
-            <em itemprop="name headline">{{$title}}</em>
+            <h4 itemprop="name headline">{{$title}}</h4>
             <p class="summary" itemprop="description">{{$description}}</p>
             <meta itemprop="url" content="{{.Permalink}}">
           </section></a>
