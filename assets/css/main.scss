@@ -166,8 +166,13 @@ article.post-preview {
 a.post-preview-text-wrapper {
   text-decoration: none;
   color: $text-color;
-}
+  // section:not(#disqus_thread) {
 
+  // }
+}
+article.post.archives a.post-preview-text-wrapper > section {
+margin: 0 0 1rem 1rem;
+}
 .post-preview-text {
   // padding: 1rem;
   text-decoration: none;
@@ -551,9 +556,7 @@ body {
   word-break: break-word;
 }
 
-section:not(#disqus_thread) {
-  margin: 0 0 1rem 1rem;
-}
+
 
 .container {
   max-width: 900px;

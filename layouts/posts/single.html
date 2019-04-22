@@ -34,6 +34,15 @@
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </section>
 {{ end }}
+  {{ $related := .Site.RegularPages.Related . | first 3 }}
+  {{ with $related }}
+<section>
+  <h2>Related Posts</h2>
+  {{ range . }}
+      {{- partial "preview-text.html" . -}}
+  {{ end }}
+</section>
+{{ end }}
 </article>
 
 {{ end }}
