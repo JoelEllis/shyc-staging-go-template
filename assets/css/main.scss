@@ -30,7 +30,7 @@ article.post {
 article.archives {
   h2,
   h3 {
-    padding-top: 3rem
+    padding-top: 3rem;
   }
   // background: none;
   // padding: 0;
@@ -118,7 +118,6 @@ header {
 }
 
 .socials {
-  display: inline-block;
   float: right;
   padding: 0.5rem;
 
@@ -241,7 +240,7 @@ a.post-preview-text-wrapper {
 
   .slide {
     display: none;
-    height: 90vh;
+    height: 94vh;
     width: 100%;
     text-align: center;
     background-position: center;
@@ -823,23 +822,30 @@ sup {
 }
 // forms
 label.required::after {
-  content:" *";
+  content: " *";
   color: #e32;
 }
-input, textarea, select {
+input,
+textarea,
+select {
   border: 0;
   border-bottom: 2px solid #ccc;
   display: block;
   font-size: 110%;
   width: 100%;
-  padding: .5rem;
+  padding: 0.5rem;
   box-sizing: border-box;
   font-family: $text-font;
+  border-radius: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: white;
+  min-height: 3rem;
   &:focus {
-    animation-name:underline;
-    animation-duration:.5s;
-    animation-timing-function:ease-in;
-    animation-fill-mode:forwards
+    animation-name: underline;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
   }
   // position: relative;
   // &:required:after {
@@ -858,10 +864,14 @@ input, textarea, select {
   // }
 }
 
-button[type=submit] {
+textarea {
+  min-height: 10rem;
+}
+
+button[type="submit"] {
   box-sizing: border-box;
   margin: 0px;
-  padding: .5rem 1.5rem;
+  padding: 0.5rem 1.5rem;
   font-size: 110%;
   vertical-align: middle;
   border: 0;
@@ -869,13 +879,14 @@ button[type=submit] {
   font-family: $text-font;
   cursor: pointer;
   line-height: 1em;
+  border-radius: 0;
 }
 
 @keyframes underline {
- from {
-  border-bottom:2px solid #ccc;
- }
- to {
-  border-bottom:2px solid $cta-color;
- }
+  from {
+    border-bottom: 2px solid #ccc;
+  }
+  to {
+    border-bottom: 2px solid $cta-color;
+  }
 }
