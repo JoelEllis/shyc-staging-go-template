@@ -92,7 +92,7 @@
 {{ end -}}
 
 {{ if eq (getenv "HUGO_ENV") "production" | or (eq .Site.Params.env "production")  }}
-  {{ template "_internal/google_analytics_async.html" . }}
+  {{ partial "analytics-cookies.html" . }}
 {{ end }}
 {{ if .IsHome -}}
 <script type="application/ld+json">
