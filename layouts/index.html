@@ -1,7 +1,7 @@
 {{ define "main" }}
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 {{- partial "slide.html" . -}}
-  <article class="post">
+  <article class="post" itemscope itemtype="http://schema.org/WebSite">
     {{ .Content }}
   </article>
 {{ end }}

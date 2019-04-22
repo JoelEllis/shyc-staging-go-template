@@ -1,6 +1,7 @@
 {{ define "main" }}
-<article class="post">
+<article class="post" itemscope itemtype="http://schema.org/Article">
   <h1 id="title">{{ .Title }}</h1>
+  {{- template "_internal/schema.html" . -}}
   {{ partial "aside" . }}
   <!-- {{with .Params.images }}
     <img src="{{ (index . 0) | absURL }}" alt="Splash Image" class="splash">

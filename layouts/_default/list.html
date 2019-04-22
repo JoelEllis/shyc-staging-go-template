@@ -1,6 +1,7 @@
 {{ define "main" }}
-  <article class="post archives">
+  <article class="post archives" itemscope itemtype="http://schema.org/Blog">
   <h1 id="title">{{ .Title }}</h1>
+  {{- template "_internal/schema.html" . -}}
     {{ .Content }}
     {{ range (.Pages.GroupByDate "2006") }}
     <h2>{{ .Key }}</h2>
@@ -13,10 +14,11 @@
 {{ $description = .Summary }}
 {{ end }}
 {{ $description = $description | default .Site.Params.description }}
-          <a href="{{.Permalink}}" class="post-preview-text-wrapper"><section class="post-preview-text">
-            <time datetime="{{.Date.Format "2006-01-02T15:04:05Z07:00"}}">{{.Date.Format "Jan 2, 2006"}}</time><br>
-            <em>{{$title}}</em>
-            <p class="summary">{{$description}}</p>
+          <a href="{{.Permalink}}" class="post-preview-text-wrapper"><section class="post-preview-text" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting" >
+            <time datetime="{{.Date.Format "2006-01-02T15:04:05Z07:00"}}" itemprop="datePublished">{{.Date.Format "Jan 2, 2006"}}</time><br>
+            <em itemprop="name headline">{{$title}}</em>
+            <p class="summary" itemprop="description">{{$description}}</p>
+            <meta itemprop="url" content="{{.Permalink}}">
           </section></a>
         {{ end }}
       {{ end }}
