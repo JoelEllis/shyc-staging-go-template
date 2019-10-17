@@ -8,11 +8,12 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   {{/* {{ .Hugo.Generator }} */}}
   {{/* NOTE: For Production make sure you add `HUGO_ENV="production"` before your build command */}}
-  {{ if (eq (getenv "HUGO_ENV") "production" | or (eq .Site.Params.env "production") ) | and (not .Params.sitemap) }}
+  {{/* 
+  {{ if (eq (getenv "HUGO_ENV") "production" | or (eq .Site.Params.env "production") ) | and (not .Params.sitemap) }} */}}
     <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
-  {{ else }}
+  {{/* {{ else }}
     <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
-  {{ end }}
+  {{ end }} */}}
 
 
   {{ $stylesheet := resources.Get "css/reset.scss" | toCSS | minify | resources.Fingerprint "sha384" }}
