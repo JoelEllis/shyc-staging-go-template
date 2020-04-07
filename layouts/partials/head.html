@@ -1,5 +1,4 @@
 <head>
-{{ $rss := .RSSLink}}
   <meta charset="utf-8">
   <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> -->
   {{/* NOTE: the Site's title, and if there is a page title, that is set too */}}
@@ -36,16 +35,15 @@
   {{ block "favicon" . }}
     {{ partialCached "site-favicon.html" . }}
   {{ end }}
+  {{ range .AlternativeOutputFormats -}}
+    {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+  {{ end -}}
 
-  {{ if $rss }}
-    <link href="{{ $rss }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
-    <link href="{{ $rss }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />
-    {{/*  <meta name="msapplication-notification" content="frequency=30;polling-uri=http://notifications.buildmypinnedsite.com/?{{ querify `feed` $rss }}&amp;id=1;polling-uri2=http://notifications.buildmypinnedsite.com/?{{ querify `feed` $rss }}&amp;id=2;polling-uri3=http://notifications.buildmypinnedsite.com/?{{ querify `feed` $rss }}&amp;id=3;polling-uri4=http://notifications.buildmypinnedsite.com/?{{ querify `feed` $rss }}&amp;id=4;polling-uri5=http://notifications.buildmypinnedsite.com/?{{ querify `feed` $rss }}&amp;id=5; cycle=1"/>  */}}
+  {{ with .OutputFormats.Get "rss" }}
+    <link href="{{ .Permalink }}" rel="feed" type="application/rss+xml" title="{{ $.Site.Title }}" />
+    {{/*  <meta name="msapplication-notification" content="frequency=30;polling-uri=http://notifications.buildmypinnedsite.com/?{{ querify `feed` .Permalink }}&amp;id=1;polling-uri2=http://notifications.buildmypinnedsite.com/?{{ querify `feed` .Permalink }}&amp;id=2;polling-uri3=http://notifications.buildmypinnedsite.com/?{{ querify `feed` .Permalink }}&amp;id=3;polling-uri4=http://notifications.buildmypinnedsite.com/?{{ querify `feed` .Permalink }}&amp;id=4;polling-uri5=http://notifications.buildmypinnedsite.com/?{{ querify `feed` .Permalink }}&amp;id=5; cycle=1"/>  */}}
   {{ end }}
   {{ with .OutputFormats.Get "jsonfeed"  }}
-  <link
-  href="{{ .Permalink }}"
-  rel="alternate" type="application/json" title="{{ $.Site.Title }}" />
   <link
   href="{{ .Permalink }}"
   rel="feed" type="application/json" title="{{ $.Site.Title }}" />
