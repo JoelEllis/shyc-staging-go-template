@@ -40,7 +40,7 @@
   {{ if $rss }}
     <link href="{{ $rss }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
     <link href="{{ $rss }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />
-    <meta name="msapplication-notification" content="frequency=30;polling-uri=http://notifications.buildmypinnedsite.com/?{{ querify `feed` $rss }}&amp;id=1;polling-uri2=http://notifications.buildmypinnedsite.com/?{{ querify `feed` $rss }}&amp;id=2;polling-uri3=http://notifications.buildmypinnedsite.com/?{{ querify `feed` $rss }}&amp;id=3;polling-uri4=http://notifications.buildmypinnedsite.com/?{{ querify `feed` $rss }}&amp;id=4;polling-uri5=http://notifications.buildmypinnedsite.com/?{{ querify `feed` $rss }}&amp;id=5; cycle=1"/>
+    {{/*  <meta name="msapplication-notification" content="frequency=30;polling-uri=http://notifications.buildmypinnedsite.com/?{{ querify `feed` $rss }}&amp;id=1;polling-uri2=http://notifications.buildmypinnedsite.com/?{{ querify `feed` $rss }}&amp;id=2;polling-uri3=http://notifications.buildmypinnedsite.com/?{{ querify `feed` $rss }}&amp;id=3;polling-uri4=http://notifications.buildmypinnedsite.com/?{{ querify `feed` $rss }}&amp;id=4;polling-uri5=http://notifications.buildmypinnedsite.com/?{{ querify `feed` $rss }}&amp;id=5; cycle=1"/>  */}}
   {{ end }}
   {{ with .OutputFormats.Get "jsonfeed"  }}
   <link
