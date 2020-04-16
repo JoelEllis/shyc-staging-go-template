@@ -36,7 +36,7 @@
 {{ end }}
   {{ $related := .Site.RegularPages.Related . | first 3 }}
   {{ with $related }}
-<section>
+<section class="related-posts">
   <h2>Related Posts</h2>
   {{ range . }}
       {{- partial "preview-text.html" . -}}

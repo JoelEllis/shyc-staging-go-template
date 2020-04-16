@@ -2,7 +2,7 @@
 
 {{ $title := .Site.Title }}
 {{ if .Title }}
-{{ $title = printf "%s%s%s" .Title " | " .Site.Title }}
+{{ $title = printf "%s%s%s" .Title " | " .Site.Params.Shortname }}
 {{ end }}
 {{ .Scratch.Set "title" $title }}
 {{ .Scratch.Set "images" (.Params.images | default .Site.Params.Images)}}
